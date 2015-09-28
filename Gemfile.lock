@@ -1,0 +1,14 @@
+GEM
+  specs:
+    ircfly (0.1.2)
+    rake (10.4.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ircfly
+  rake
+
+BUNDLED WITH
+   1.10.5
