@@ -3,12 +3,10 @@ require 'spec_helper'
 describe 'Oper' do
   it 'should reject unauthorized users' do
     swarm = Ircfly::Swarm.new
-    bot = swarm.fly(server: 'irc.example.com', nick: 'testbot')
+    bot = swarm.fly(server: 'irc.ecnet.org', nick: 'testbot')
     swarm.perform do
       bot.send('JOIN #test')
-      sleep(4)
-      expect(bot.oper?).to be(false)
-      bot.quit
+      sleep(1)
     end
     swarm.execute
   end
