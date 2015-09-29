@@ -12,3 +12,5 @@ RSpec.configure do |config|
 
   Kernel.srand config.seed
 end
+
+IRC_SERVER='irc.example.com'
