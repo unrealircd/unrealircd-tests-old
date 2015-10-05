@@ -22,8 +22,8 @@ describe 'Channel Mode D/d' do
       sleep(3)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/cbot2/)).to eq(false)
-    expect(@cbot2.received_pattern(/cbot1/)).to eq(false)
+    expect(@cbot1.received_pattern(/cbot2/)).not_to eq(true)
+    expect(@cbot2.received_pattern(/cbot1/)).not_to eq(true)
   end
 
   it 'should show operators joining a mode +d channel'
