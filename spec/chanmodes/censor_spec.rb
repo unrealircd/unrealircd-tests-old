@@ -12,6 +12,7 @@ describe 'Channel Mode G (censor)' do
   it 'should censor bad words' do
     @swarm.perform do
       @obot.send("JOIN #{@test_channel}")
+      sleep(1)
       @cbot1.send("JOIN #{@test_channel}")
       sleep(1)
       channel = @obot.channel_with_name(@test_channel)
@@ -28,6 +29,7 @@ describe 'Channel Mode G (censor)' do
   it 'should not censor good words' do
     @swarm.perform do
       @obot.send("JOIN #{@test_channel}")
+      sleep(1)
       @cbot1.send("JOIN #{@test_channel}")
       sleep(1)
       channel = @obot.channel_with_name(@test_channel)
