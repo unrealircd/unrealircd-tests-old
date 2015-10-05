@@ -14,3 +14,4 @@ RSpec.configure do |config|
 end
 
 IRC_SERVER='irc.example.com'
+IRC_PORT=6667

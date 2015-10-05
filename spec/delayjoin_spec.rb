@@ -4,7 +4,7 @@ describe 'Channel Mode D/d' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     @test_channel = '#test'
-    @obot = @swarm.fly(server: IRC_SERVER, port: 6667, nick: 'obot')
+    @obot = @swarm.fly(server: IRC_SERVER, port: IRC_PORT, nick: 'obot')
     @cbot1 = @swarm.fly(server: IRC_SERVER, nick: 'cbot1')
     @cbot2 = @swarm.fly(server: IRC_SERVER, nick: 'cbot2')
   end
