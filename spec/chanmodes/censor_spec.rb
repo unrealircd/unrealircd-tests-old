@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Channel Mode G censor' do
+describe 'Channel Mode G (censor)' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     @test_channel = '#censor'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Channel Mode D/d' do
+describe 'Channel Mode D/d (delayjoin)' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     @test_channel = '#test'

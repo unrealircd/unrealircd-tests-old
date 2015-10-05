@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'User Mode G censor' do
+describe 'User Mode G (censor)' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     server = IRC_CONFIG.servers['primary']
