@@ -8,7 +8,7 @@ describe 'Channel Mode N (nonickchange)' do
     @cbot1 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1')
   end
 
-  it 'should disallow NOTICE' do
+  it 'should disallow nick changes' do
     @swarm.perform do
       @obot.send("JOIN #nickchange")
       @obot.send("MODE #nickchange +N")
