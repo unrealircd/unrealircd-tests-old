@@ -1,5 +1,7 @@
+$:<< File.join(File.dirname(__FILE__), '..')
 require 'ircfly'
 require 'ircfly/fly'
+require 'irc_config.rb'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -13,5 +15,4 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
-IRC_SERVER='irc.example.com'
-IRC_PORT=6667
+IRC_CONFIG = IrcConfig.new('config.yaml')

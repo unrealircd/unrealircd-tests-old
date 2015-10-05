@@ -4,9 +4,10 @@ describe 'Channel Mode D/d' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     @test_channel = '#test'
-    @obot = @swarm.fly(server: IRC_SERVER, port: IRC_PORT, nick: 'obot')
-    @cbot1 = @swarm.fly(server: IRC_SERVER, nick: 'cbot1')
-    @cbot2 = @swarm.fly(server: IRC_SERVER, nick: 'cbot2')
+    server = IRC_CONFIG.servers['primary']
+    @obot = @swarm.fly(server: server.host, port: server.port, nick: 'obot')
+    @cbot1 = @swarm.fly(server: server.host, nick: 'cbot1')
+    @cbot2 = @swarm.fly(server: server.host, nick: 'cbot2')
   end
 
   it 'should not show users joining a mode +d channel' do
