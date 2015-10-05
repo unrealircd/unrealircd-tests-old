@@ -6,8 +6,8 @@ describe 'Channel Mode D/d' do
     @test_channel = '#test'
     server = IRC_CONFIG.servers['primary']
     @obot = @swarm.fly(server: server.host, port: server.port, nick: 'obot')
-    @cbot1 = @swarm.fly(server: server.host, nick: 'cbot1')
-    @cbot2 = @swarm.fly(server: server.host, nick: 'cbot2')
+    @cbot1 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1')
+    @cbot2 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot2')
   end
 
   it 'should not show users joining a mode +d channel' do
@@ -16,9 +16,10 @@ describe 'Channel Mode D/d' do
       sleep(1)
       channel = @obot.channel_with_name(@test_channel)
       channel.mode('+D')
+      sleep(1)
       @cbot1.send("JOIN #{@test_channel}")
       @cbot2.send("JOIN #{@test_channel}")
-      sleep(2)
+      sleep(3)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/cbot2/)).to eq(false)
