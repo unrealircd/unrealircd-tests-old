@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Channel Mode M (regonlymsg)' do
+describe 'Channel Mode M (regonlyspeak)' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     server = IRC_CONFIG.servers['primary']
