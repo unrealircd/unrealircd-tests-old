@@ -8,7 +8,7 @@ describe 'Channel Mode O (operonly)' do
     @cbot1 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1')
   end
 
-  it 'should disallow non-ircops' do
+  it 'should prevent non-ircops from joining' do
     @swarm.perform do
       @obot.send("OPER netadmin test")
       @obot.send("JOIN #test")
@@ -21,4 +21,20 @@ describe 'Channel Mode O (operonly)' do
     expect(@obot.received_pattern(/:cbot1.*JOIN/)).not_to eq(true)
     expect(@cbot1.received_pattern(/520.*Cannot join channel/)).to eq(true)
   end
+
+  it 'should not prevent ircops from joining' do
+    @swarm.perform do
+      @obot.send("OPER netadmin test")
+      @cbot1.send("OPER netadmin test")
+      @obot.send("JOIN #test")
+      @obot.send("MODE #test +O")
+      sleep(3)
+      @cbot1.send("JOIN #test")
+      sleep(3)
+    end
+    @swarm.execute
+    expect(@obot.received_pattern(/:cbot1.*JOIN/)).to eq(true)
+    expect(@cbot1.received_pattern(/520.*Cannot join channel/)).not_to eq(true)
+  end
+
 end
