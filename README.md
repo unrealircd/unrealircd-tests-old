@@ -38,7 +38,22 @@ bundle install
 
 ## Expected test output
 You will see the raw IRC traffic (in and out). At the end it will say something like:
+```
 Finished in 4.08 seconds (files took 0.24379 seconds to load)
 1 example, 0 failures
+```
 
-The most important is the '0 failures' part.
+Obviously, the most important is the '0 failures' part.
+
+## Writing tests
+We could really use a lot more tests, so if you want to help out, please do.
+
+Check out a few tests in the spec/ directory. Feel free to copy one and then create a new test based on it.
+
+Tests:
+* `spec/chanmodes/` - Channel modes
+* `spec/usermodes/` - User modes
+* `spec/extbans/` - Extended bans
+* `spec/cap` - CAP (client protocol negotiation)
+* `spec/usercommands/` - User commands, such as JOIN PART TOPIC etc.
+* `spec/opercommands/` - IRCOp-only commands, such as SAJOIN SAPART KILL etc.
