@@ -1,11 +1,9 @@
----
-Options:
-  ExampleKey: 'ExampleValue'
-
 Servers:
   primary:
-    server: 'irc.example.org:6667'
+    host: '127.0.0.1'
+    port: 5667
+    ssl_port: 5900
   secondary:
-    host: 'irc.example.org'
-    port: 6667
----
+    host: '127.0.0.1'
+    port: 5668
+    ssl_port: 5901
