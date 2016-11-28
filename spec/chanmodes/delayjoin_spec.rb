@@ -16,7 +16,7 @@ describe 'Channel Mode D/d (delayjoin)' do
       sleep(1)
       channel = @obot.channel_with_name(@test_channel)
       channel.mode('+D')
-      sleep(3)
+      sleep(4)
       @cbot1.send("JOIN #{@test_channel}")
       @cbot2.send("JOIN #{@test_channel}")
       sleep(3)
