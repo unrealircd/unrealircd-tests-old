@@ -10,13 +10,11 @@ describe 'CAP away-notify' do
 
   it 'should show AWAY changes if enabled' do
     @swarm.perform do
-      @obot.send("JOIN #test")
-      sleep(1)
       @cbot1.send("CAP REQ away-notify")
+      @obot.send("JOIN #test")
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(5)
       @obot.send("AWAY :going away")
-      sleep(2)
       @obot.send("AWAY")
       sleep(2)
     end
