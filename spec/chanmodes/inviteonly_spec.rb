@@ -12,9 +12,9 @@ describe 'Channel Mode i (invite only)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +i")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/473.*Cannot join/)).to eq(true)
@@ -25,9 +25,9 @@ describe 'Channel Mode i (invite only)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test -i")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/473.*Cannot join/)).not_to eq(true)

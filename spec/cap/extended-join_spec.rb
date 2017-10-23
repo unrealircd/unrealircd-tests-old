@@ -12,9 +12,9 @@ describe 'CAP extended-join' do
     @swarm.perform do
       @cbot1.send("CAP REQ extended-join")
       @cbot1.send("JOIN #test")
-      sleep(1)
+      sleep(0.1)
       @cbot2.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot2.* JOIN #test \* :This is my realname/)).to eq(true)
@@ -23,9 +23,9 @@ describe 'CAP extended-join' do
   it 'should not show gecos without extended-join' do
     @swarm.perform do
       @cbot1.send("JOIN #test")
-      sleep(1)
+      sleep(0.1)
       @cbot2.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot2.*This is my realname/)).not_to eq(true)

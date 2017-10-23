@@ -12,11 +12,11 @@ describe 'Channel Mode V (noinvite)' do
     @swarm.perform do
       @obot.send("JOIN #invite")
       @obot.send("MODE #invite +Vi")
-      sleep(3)
+      sleep(0.3)
       @obot.send("INVITE cbot1 #invite")
-      sleep(2)
+      sleep(0.2)
       @cbot1.send("JOIN #invite")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     # We expect the invite to be blocked

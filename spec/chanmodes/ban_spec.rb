@@ -15,9 +15,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b cbot1!*@*")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -28,9 +28,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b cbot999!*@*")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).not_to eq(true)
@@ -41,9 +41,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*bantest@*")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -54,9 +54,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*bantezz@*")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).not_to eq(true)
@@ -67,9 +67,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@localhost")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -80,9 +80,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@localhozz")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).not_to eq(true)
@@ -93,9 +93,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@127.0.0.1")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -106,9 +106,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@127.0.0.5")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).not_to eq(true)
@@ -119,9 +119,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@127.0.0.0/8")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -132,9 +132,9 @@ describe 'Channel Mode b (ban)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@128.0.0.0/8")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).not_to eq(true)
@@ -146,9 +146,9 @@ describe 'Channel Mode b (ban)' do
       @cbot1.send("MODE cbot1 +x")
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@localhost")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -161,9 +161,9 @@ describe 'Channel Mode b (ban)' do
       # TODO: fetch cloaked host instead of hardcoding here
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@Clk-6C400E48")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -176,9 +176,9 @@ describe 'Channel Mode b (ban)' do
       # TODO: fetch cloaked host instead of hardcoding here
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@Clk-6C400E48")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/474.*Cannot join/)).to eq(true)
@@ -190,9 +190,9 @@ describe 'Channel Mode b (ban)' do
       @cbot1.send("VHOST test test")
       @obot.send("JOIN #test")
       @obot.send("MODE #test +b *!*@this.is.a.test")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/396.*this.is.a.test/)).to eq(true)

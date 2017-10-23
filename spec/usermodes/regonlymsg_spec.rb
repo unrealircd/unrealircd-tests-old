@@ -11,9 +11,9 @@ describe 'User Mode R (regonlymsg)' do
   it 'should block messages from users who are not identified to services' do
     @swarm.perform do
       @cbot2.send("MODE cbot2 +R")
-      sleep(2)
+      sleep(0.2)
       @cbot1.send("PRIVMSG cbot2 :good day. this should be blocked.")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/must identify to a registered nick to private message/)).to eq(true)

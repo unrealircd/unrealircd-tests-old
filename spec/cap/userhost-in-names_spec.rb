@@ -11,10 +11,10 @@ describe 'CAP userhost-in-names' do
   it 'should show user@host in NAMES' do
     @swarm.perform do
       @obot.send("JOIN #test")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("CAP REQ userhost-in-names")
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/CAP.*ACK.*userhost-in-names/)).to eq(true)
@@ -24,10 +24,10 @@ describe 'CAP userhost-in-names' do
   it 'should not show user@host in NAMES if not enabled' do
     @swarm.perform do
       @obot.send("JOIN #test")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("CAP REQ -userhost-in-names")
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/353.*obot.*xxidentyy/)).not_to eq(true)

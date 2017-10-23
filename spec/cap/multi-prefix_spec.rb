@@ -12,10 +12,10 @@ describe 'CAP multi-prefix' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +hv obot obot")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("CAP REQ multi-prefix")
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/CAP.*ACK.*multi-prefix/)).to eq(true)
@@ -26,10 +26,10 @@ describe 'CAP multi-prefix' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +hv obot obot")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("CAP REQ -multi-prefix")
       @cbot1.send("JOIN #test")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/353.*@%\+obot.*/)).not_to eq(true)

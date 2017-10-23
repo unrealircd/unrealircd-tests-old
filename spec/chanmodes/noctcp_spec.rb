@@ -12,10 +12,10 @@ describe 'Channel Mode C (noctcp)' do
     @swarm.perform do
       @obot.send("JOIN #ctcp")
       @obot.send("MODE #ctcp +C")
-      sleep(2)
+      sleep(0.2)
       @cbot1.send("JOIN #ctcp")
       @cbot1.send("PRIVMSG #ctcp :\001CTCPTEST\001")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/CTCPs are not permitted in this channel/)).to eq(true)

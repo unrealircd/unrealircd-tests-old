@@ -12,9 +12,9 @@ describe 'User Mode T (noctcp)' do
   it 'should error and block CTCP' do
     @swarm.perform do
       @cbot2.send("MODE cbot2 +T")
-      sleep(2)
+      sleep(0.2)
       @cbot1.send("PRIVMSG cbot2 :\001CTCPTEST\001")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/does not accept CTCPs/)).to eq(true)

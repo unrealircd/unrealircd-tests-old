@@ -10,7 +10,7 @@ describe 'CAP' do
   it 'should show parameters with CAP v3.2' do
     @swarm.perform do
       @cbot1.send("CAP LS 302")
-      sleep(3)
+      sleep(0.3)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:[^ ]+ CAP.* LS :.*=.*/)).to eq(true)
@@ -21,7 +21,7 @@ describe 'CAP' do
   it 'should not show parameters with versionless CAP' do
     @swarm.perform do
       @cbot1.send("CAP LS")
-      sleep(3)
+      sleep(0.3)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:[^ ]+ CAP.* LS :.*/)).to eq(true)
@@ -33,7 +33,7 @@ describe 'CAP' do
   it 'should not show parameters with CAP v3.0' do
     @swarm.perform do
       @cbot1.send("CAP LS 300")
-      sleep(3)
+      sleep(0.3)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:[^ ]+ CAP.* LS :.*/)).to eq(true)
@@ -45,7 +45,7 @@ describe 'CAP' do
     @swarm.perform do
       @cbot1.send("CAP LS")
       @cbot1.send("CAP LIST")
-      sleep(3)
+      sleep(0.3)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:[^ ]+ CAP.* LIST :/)).to eq(true)

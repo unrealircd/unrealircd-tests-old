@@ -18,7 +18,7 @@ describe 'Channel Mode P (permanent)' do
       @obot.send("MODE #perm +b")
       @obot.send("MODE #perm +e")
       @obot.send("MODE #perm +I")
-      sleep(1)
+      sleep(0.1)
       @obot.send("MODE #perm -PTbeI ban!*@* exempt!*@* invex!*@*")
     end
     @swarm.execute
@@ -40,7 +40,7 @@ describe 'Channel Mode P (permanent)' do
       @obot.send("TOPIC #perm :test 123")
       @obot.send("PART #perm")
       @obot.send("JOIN #perm")
-      sleep(1)
+      sleep(0.1)
       @obot.send("MODE #perm -P")
       @obot.send("TOPIC #perm :")
     end

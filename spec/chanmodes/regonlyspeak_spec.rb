@@ -12,11 +12,11 @@ describe 'Channel Mode M (regonlyspeak)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +M")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("JOIN #test")
-      sleep(1)
+      sleep(0.1)
       @cbot1.send("PRIVMSG #test :this should be rejected")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/404.*You must have a registered nick/)).to eq(true)

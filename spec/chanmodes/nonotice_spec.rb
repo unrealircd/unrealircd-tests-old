@@ -12,10 +12,10 @@ describe 'Channel Mode T (nonotice)' do
     @swarm.perform do
       @obot.send("JOIN #notice")
       @obot.send("MODE #notice +T")
-      sleep(2)
+      sleep(0.2)
       @cbot1.send("JOIN #notice")
       @cbot1.send("NOTICE #notice :this is a test notice")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/NOTICEs are not permitted in this channel/)).to eq(true)

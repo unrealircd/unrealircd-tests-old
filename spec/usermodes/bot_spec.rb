@@ -12,7 +12,7 @@ describe 'User Mode B (bot)' do
   it 'should show BOTMOTD upon MODE +B' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 +B")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/BOTMOTD/)).to eq(true)
@@ -22,7 +22,7 @@ describe 'User Mode B (bot)' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 +B")
       @cbot1.send("WHOIS cbot1")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/is a \002Bot\002 on/)).to eq(true)
@@ -31,9 +31,9 @@ describe 'User Mode B (bot)' do
   it 'should show as Bot in /WHOIS performed by another user' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 +B")
-      sleep(2)
+      sleep(0.2)
       @cbot2.send("WHOIS cbot1")
-      sleep(2)
+      sleep(0.2)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/is a \002Bot\002 on/)).to eq(true)
