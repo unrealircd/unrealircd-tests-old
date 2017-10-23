@@ -160,7 +160,7 @@ describe 'Channel Mode b (ban)' do
       @cbot1.send("MODE cbot1 +x")
       # TODO: fetch cloaked host instead of hardcoding here
       @obot.send("JOIN #test")
-      @obot.send("MODE #test +b *!*@Mask-4E7B8307")
+      @obot.send("MODE #test +b *!*@Clk-6C400E48")
       sleep(1)
       @cbot1.send("JOIN #test")
       sleep(2)
@@ -175,7 +175,7 @@ describe 'Channel Mode b (ban)' do
       @cbot1.send("MODE cbot1 -x")
       # TODO: fetch cloaked host instead of hardcoding here
       @obot.send("JOIN #test")
-      @obot.send("MODE #test +b *!*@Mask-4E7B8307")
+      @obot.send("MODE #test +b *!*@Clk-6C400E48")
       sleep(1)
       @cbot1.send("JOIN #test")
       sleep(2)
