@@ -13,9 +13,9 @@ describe 'User Mode W (showwhois)' do
     @swarm.perform do
       @obot.send("OPER netadmin test")
       @obot.send("MODE obot +W")
-      sleep(0.3)
+      sleep(0.5)
       @cbot1.send("WHOIS obot")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@obot.received_pattern(/cbot1.*did a \/whois on you/)).to eq(true)

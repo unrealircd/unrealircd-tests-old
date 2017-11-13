@@ -14,9 +14,9 @@ describe 'CAP chghost' do
       @cbot1.send("JOIN #test")
       @cbot2.send("MODE cbot2 -x")
       @cbot2.send("JOIN #test")
-      sleep(0.3)
+      sleep(0.5)
       @cbot2.send("MODE cbot2 +x")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot2.* CHGHOST.*/)).to eq(true)
@@ -28,7 +28,7 @@ describe 'CAP chghost' do
       @cbot2.send("MODE cbot2 -x")
       @cbot2.send("JOIN #test")
       @cbot2.send("MODE cbot2 +x")
-      sleep(0.3)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot2.*CHGHOST.*/)).not_to eq(true)

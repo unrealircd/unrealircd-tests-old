@@ -14,10 +14,10 @@ describe 'Spamfilter' do
       @obot.send("SPAMFILTER add -simple c block 0 spamfilter_test simple*test")
       @obot.send("JOIN #test")
       @cbot1.send("JOIN #test")
-      sleep(0.1)
+      sleep(0.5)
       @cbot1.send("PRIVMSG #test :simple123test")
       @cbot1.send("PRIVMSG #test :othermsg")
-      sleep(0.2)
+      sleep(0.5)
       @obot.send("SPAMFILTER del -simple c block 0 spamfilter_test simple*test")
     end
     @swarm.execute
@@ -33,10 +33,10 @@ describe 'Spamfilter' do
       @obot.send("SPAMFILTER add -regex c block 0 spamfilter_test simple.*test")
       @obot.send("JOIN #test")
       @cbot1.send("JOIN #test")
-      sleep(0.1)
+      sleep(0.5)
       @cbot1.send("PRIVMSG #test :simple123test")
       @cbot1.send("PRIVMSG #test :othermsg")
-      sleep(0.2)
+      sleep(0.5)
       @obot.send("SPAMFILTER del -regex c block 0 spamfilter_test simple.*test")
     end
     @swarm.execute
@@ -52,10 +52,10 @@ describe 'Spamfilter' do
       @obot.send("SPAMFILTER add -posix c block 0 spamfilter_test simple.*test")
       @obot.send("JOIN #test")
       @cbot1.send("JOIN #test")
-      sleep(0.1)
+      sleep(0.5)
       @cbot1.send("PRIVMSG #test :simple123test")
       @cbot1.send("PRIVMSG #test :othermsg")
-      sleep(0.2)
+      sleep(0.5)
       @obot.send("SPAMFILTER del -posix c block 0 spamfilter_test simple.*test")
     end
     @swarm.execute

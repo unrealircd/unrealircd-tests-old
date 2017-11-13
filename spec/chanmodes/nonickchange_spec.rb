@@ -12,10 +12,10 @@ describe 'Channel Mode N (nonickchange)' do
     @swarm.perform do
       @obot.send("JOIN #nickchange")
       @obot.send("MODE #nickchange +N")
-      sleep(0.2)
+      sleep(0.5)
       @cbot1.send("JOIN #nickchange")
       @cbot1.send("NICK nonickchg")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/Can not change nickname/)).to eq(true)

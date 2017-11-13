@@ -12,10 +12,10 @@ describe 'Channel Mode c (nocolor)' do
     @swarm.perform do
       @obot.send("JOIN #color")
       @obot.send("MODE #color +c")
-      sleep(0.2)
+      sleep(0.5)
       @cbot1.send("JOIN #color")
       @cbot1.send("PRIVMSG #color :\0034this is red\003")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/Color is not permitted in this channel/)).to eq(true)
@@ -26,10 +26,10 @@ describe 'Channel Mode c (nocolor)' do
     @swarm.perform do
       @obot.send("JOIN #color")
       @obot.send("MODE #color +c")
-      sleep(0.2)
+      sleep(0.5)
       @cbot1.send("JOIN #color")
       @cbot1.send("PRIVMSG #color :\026this is reverse\026")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/Color is not permitted in this channel/)).to eq(true)

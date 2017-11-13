@@ -16,7 +16,7 @@ describe 'CAP away-notify' do
       sleep(0.5)
       @obot.send("AWAY :going away")
       @obot.send("AWAY")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/CAP.*ACK.*away-notify/)).to eq(true)
@@ -27,14 +27,14 @@ describe 'CAP away-notify' do
   it 'should not show AWAY changes if not enabled' do
     @swarm.perform do
       @obot.send("JOIN #test")
-      sleep(0.1)
+      sleep(0.5)
       @cbot1.send("CAP REQ -away-notify")
       @cbot1.send("JOIN #test")
-      sleep(0.2)
+      sleep(0.5)
       @obot.send("AWAY :going away")
-      sleep(0.2)
+      sleep(0.5)
       @obot.send("AWAY")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:obot.* AWAY/)).not_to eq(true)

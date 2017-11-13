@@ -13,9 +13,9 @@ describe 'Channel Mode L (link)' do
       @obot.send("JOIN #one")
       @obot.send("OPER netadmin test")
       @obot.send("MODE #one +lL 1 #two")
-      sleep(0.2)
+      sleep(0.5)
       @cbot1.send("JOIN #one")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#one/)).not_to eq(true)
@@ -27,9 +27,9 @@ describe 'Channel Mode L (link)' do
       @obot.send("JOIN #one")
       @obot.send("OPER netadmin test")
       @obot.send("MODE #one +lL 99 #two")
-      sleep(0.2)
+      sleep(0.5)
       @cbot1.send("JOIN #one")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#one/)).to eq(true)

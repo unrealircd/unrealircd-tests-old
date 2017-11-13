@@ -12,9 +12,9 @@ describe 'Channel Mode R (regonly)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +R")
-      sleep(0.3)
+      sleep(0.5)
       @cbot1.send("JOIN #test")
-      sleep(0.3)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@obot.received_pattern(/:cbot1.*JOIN/)).not_to eq(true)

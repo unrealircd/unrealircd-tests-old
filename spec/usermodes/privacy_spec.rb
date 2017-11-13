@@ -13,9 +13,9 @@ describe 'User Mode p (privacy)' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 -p")
       @cbot1.send("JOIN #secret")
-      sleep(0.2)
+      sleep(0.5)
       @cbot2.send("WHOIS cbot1")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/#secret/)).to eq(true)
@@ -25,9 +25,9 @@ describe 'User Mode p (privacy)' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 +p")
       @cbot1.send("JOIN #secret")
-      sleep(0.2)
+      sleep(0.5)
       @cbot2.send("WHOIS cbot1")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/#secret/)).not_to eq(true)
@@ -37,9 +37,9 @@ describe 'User Mode p (privacy)' do
     @swarm.perform do
       @cbot1.send("MODE cbot1 +p")
       @cbot1.send("JOIN #secret")
-      sleep(0.2)
+      sleep(0.5)
       @cbot2.send("WHO cbot1")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/#secret/)).not_to eq(true)

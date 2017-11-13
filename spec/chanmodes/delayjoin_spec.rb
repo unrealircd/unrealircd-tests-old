@@ -13,13 +13,13 @@ describe 'Channel Mode D/d (delayjoin)' do
   it 'should not show users joining a mode +d channel' do
     @swarm.perform do
       @obot.send("JOIN #{@test_channel}")
-      sleep(0.1)
+      sleep(0.5)
       channel = @obot.channel_with_name(@test_channel)
       channel.mode('+D')
-      sleep(0.4)
+      sleep(0.5)
       @cbot1.send("JOIN #{@test_channel}")
       @cbot2.send("JOIN #{@test_channel}")
-      sleep(0.3)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/cbot2/)).not_to eq(true)

@@ -12,11 +12,11 @@ describe 'Channel Mode Q (nokick)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +Q")
-      sleep(0.1)
+      sleep(0.5)
       @cbot1.send("JOIN #test")
-      sleep(0.3)
+      sleep(0.5)
       @obot.send("KICK #test cbot1")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@obot.received_pattern(/972.*KICK/)).to eq(true)

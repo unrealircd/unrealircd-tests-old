@@ -12,9 +12,9 @@ describe 'Channel Mode K (noknock)' do
     @swarm.perform do
       @obot.send("JOIN #knock")
       @obot.send("MODE #knock +iK")
-      sleep(0.3)
+      sleep(0.5)
       @cbot1.send("KNOCK #knock")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/No knocks are allowed/)).to eq(true)
@@ -25,9 +25,9 @@ describe 'Channel Mode K (noknock)' do
     @swarm.perform do
       @obot.send("JOIN #knock")
       @obot.send("MODE #knock +i-K")
-      sleep(0.3)
+      sleep(0.5)
       @cbot1.send("KNOCK #knock")
-      sleep(0.2)
+      sleep(0.5)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/Knocked on #knock/)).to eq(true)
