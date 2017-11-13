@@ -16,7 +16,7 @@ describe 'CAP away-notify' do
       sleep(0.5)
       @obot.send("AWAY :going away")
       @obot.send("AWAY")
-      sleep(0.5)
+      sleep(2)
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/CAP.*ACK.*away-notify/)).to eq(true)
