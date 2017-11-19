@@ -34,7 +34,7 @@ describe 'Extended Ban Exception ~m (msgbypass)' do
     expect(@obot.received_pattern(/:cbot1.*PRIVMSG.*test123/)).not_to eq(true)
   end
 
-  it 'should allow messages with matching +e ~m:moderated' do
+  it 'should allow messages with matching +e ~m:moderated (+m)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +me ~m:moderated:cbot1!*@*")
@@ -48,7 +48,7 @@ describe 'Extended Ban Exception ~m (msgbypass)' do
     expect(@obot.received_pattern(/:cbot1.*PRIVMSG.*test123/)).to eq(true)
   end
 
-  it 'should disallow messages without matching +e ~m:moderated' do
+  it 'should disallow messages without matching +e ~m:moderated (+m)' do
     @swarm.perform do
       @obot.send("JOIN #test")
       @obot.send("MODE #test +me ~m:moderated:NOMATCH!*@*")
@@ -59,6 +59,34 @@ describe 'Extended Ban Exception ~m (msgbypass)' do
     end
     @swarm.execute
     expect(@cbot1.received_pattern(/.* 404 .*You need voice.*/)).to eq(true)
+    expect(@obot.received_pattern(/:cbot1.*PRIVMSG.*test123/)).not_to eq(true)
+  end
+
+  it 'should allow messages with matching +e ~m:moderated (+M)' do
+    @swarm.perform do
+      @obot.send("JOIN #test")
+      @obot.send("MODE #test +Me ~m:moderated:cbot1!*@*")
+      sleep(0.5)
+      @cbot1.send("JOIN #test")
+      @cbot1.send("PRIVMSG #test :test123")
+      sleep(0.5)
+    end
+    @swarm.execute
+    expect(@cbot1.received_pattern(/.* 404 .*You must have a registered nick.*/)).not_to eq(true)
+    expect(@obot.received_pattern(/:cbot1.*PRIVMSG.*test123/)).to eq(true)
+  end
+
+  it 'should disallow messages without matching +e ~m:moderated (+M)' do
+    @swarm.perform do
+      @obot.send("JOIN #test")
+      @obot.send("MODE #test +Me ~m:moderated:NOMATCH!*@*")
+      sleep(0.5)
+      @cbot1.send("JOIN #test")
+      @cbot1.send("PRIVMSG #test :test123")
+      sleep(0.5)
+    end
+    @swarm.execute
+    expect(@cbot1.received_pattern(/.* 404 .*You must have a registered nick.*/)).to eq(true)
     expect(@obot.received_pattern(/:cbot1.*PRIVMSG.*test123/)).not_to eq(true)
   end
 
