@@ -13,7 +13,7 @@ describe 'Channel Mode O (operonly)' do
       @obot.send("OPER netadmin test")
       @obot.send("JOIN #test")
       @obot.send("MODE #test +O")
-      sleep(0.5)
+      sleep(1)
       @cbot1.send("JOIN #test")
       sleep(0.5)
     end
@@ -28,7 +28,7 @@ describe 'Channel Mode O (operonly)' do
       @cbot1.send("OPER netadmin test")
       @obot.send("JOIN #test")
       @obot.send("MODE #test +O")
-      sleep(0.5)
+      sleep(1)
       @cbot1.send("JOIN #test")
       sleep(0.5)
     end
