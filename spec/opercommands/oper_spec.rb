@@ -7,7 +7,7 @@ describe '/OPER command' do
     @obot = @swarm.fly(server: server.host, port: server.port, nick: 'obot')
   end
 
-  it 'should reject due to wrong case of oper name' do
+  it 'should reject wrong case of oper name' do
     @swarm.perform do
       @obot.send("OPER NeTaDmIn test")
       sleep(0.5)
@@ -18,7 +18,7 @@ describe '/OPER command' do
     expect(@obot.received_pattern(/ 381 /)).not_to eq(true)
   end
 
-  it 'should reject due to bad host' do
+  it 'should reject incorrect host' do
     @swarm.perform do
       @obot.send("OPER netadmin-badhost test")
       sleep(0.5)
@@ -29,7 +29,7 @@ describe '/OPER command' do
     expect(@obot.received_pattern(/ 381 /)).not_to eq(true)
   end
 
-  it 'should reject due to wrong password' do
+  it 'should reject wrong password' do
     @swarm.perform do
       @obot.send("OPER netadmin TeSt")
       sleep(0.5)
@@ -41,7 +41,7 @@ describe '/OPER command' do
     expect(@obot.received_pattern(/ 381 /)).not_to eq(true)
   end
 
-  it 'should accept with correct name, pass and hostname' do
+  it 'should accept with correct name, password and hostname' do
     @swarm.perform do
       @obot.send("OPER netadmin test")
       sleep(0.5)
