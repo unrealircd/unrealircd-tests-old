@@ -21,18 +21,6 @@ describe 'User Mode T (noctcp)' do
     expect(@cbot2.received_pattern(/CTCPTEST/)).not_to eq(true)
   end
 
-  it 'should error and block CTCP if sender has +T' do
-    @swarm.perform do
-      @cbot1.send("MODE cbot1 +T")
-      sleep(0.5)
-      @cbot1.send("PRIVMSG cbot2 :\001CTCPTEST\001")
-      sleep(0.5)
-    end
-    @swarm.execute
-    expect(@cbot1.received_pattern(/CTCP request.*blocked/)).to eq(true)
-    expect(@cbot2.received_pattern(/CTCPTEST/)).not_to eq(true)
-  end
-
   it 'should allow CTCP if from IRCOp and target has +T' do
     @swarm.perform do
       @cbot1.send("OPER netadmin test")
