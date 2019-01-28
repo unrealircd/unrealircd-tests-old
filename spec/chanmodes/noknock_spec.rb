@@ -30,7 +30,7 @@ describe 'Channel Mode K (noknock)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/Knocked on #knock/)).to eq(true)
+    expect(@cbot1.received_pattern(/Knocked on \#knock/)).to eq(true)
     expect(@obot.received_pattern(/\[Knock\] by /)).to eq(true)
   end
 end

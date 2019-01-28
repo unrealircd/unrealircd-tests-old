@@ -23,13 +23,13 @@ describe 'Channel Mode P (permanent)' do
     end
     @swarm.execute
     # Channel modes (+PT)
-    expect(@obot.received_pattern(/324 obot #perm \+TP/)).to eq(true)
+    expect(@obot.received_pattern(/324 obot \#perm \+TP/)).to eq(true)
     # Ban
-    expect(@obot.received_pattern(/367 obot #perm ban\!\*@\*/)).to eq(true)
+    expect(@obot.received_pattern(/367 obot \#perm ban\!\*@\*/)).to eq(true)
     # Exempt
-    expect(@obot.received_pattern(/348 obot #perm exempt\!\*@\*/)).to eq(true)
+    expect(@obot.received_pattern(/348 obot \#perm exempt\!\*@\*/)).to eq(true)
     # Invex
-    expect(@obot.received_pattern(/346 obot #perm invex\!\*@\*/)).to eq(true)
+    expect(@obot.received_pattern(/346 obot \#perm invex\!\*@\*/)).to eq(true)
   end
 
   it 'should result in persistent topic' do
@@ -46,7 +46,7 @@ describe 'Channel Mode P (permanent)' do
     end
     @swarm.execute
 
-    expect(@obot.received_pattern(/332 obot #perm :test 123/)).to eq(true)
+    expect(@obot.received_pattern(/332 obot \#perm :test 123/)).to eq(true)
   end
 
 end

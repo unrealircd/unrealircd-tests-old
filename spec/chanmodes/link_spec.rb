@@ -18,8 +18,8 @@ describe 'Channel Mode L (link)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#one/)).not_to eq(true)
-    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#two/)).to eq(true)
+    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*\#one/)).not_to eq(true)
+    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*\#two/)).to eq(true)
   end
 
   it 'should not send users to linked channel (+L) if limit is not reached (+l)' do
@@ -32,8 +32,8 @@ describe 'Channel Mode L (link)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#one/)).to eq(true)
-    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*#two/)).not_to eq(true)
+    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*\#one/)).to eq(true)
+    expect(@cbot1.received_pattern(/:cbot1.*JOIN.*\#two/)).not_to eq(true)
   end
 
 end

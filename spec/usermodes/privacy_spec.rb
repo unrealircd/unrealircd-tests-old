@@ -18,7 +18,7 @@ describe 'User Mode p (privacy)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot2.received_pattern(/#secret/)).to eq(true)
+    expect(@cbot2.received_pattern(/\#secret/)).to eq(true)
   end
 
   it 'should hide channel in /WHOIS with umode p' do
@@ -30,7 +30,7 @@ describe 'User Mode p (privacy)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot2.received_pattern(/#secret/)).not_to eq(true)
+    expect(@cbot2.received_pattern(/\#secret/)).not_to eq(true)
   end
 
   it 'should hide channel in /WHO with umode p' do
@@ -42,7 +42,7 @@ describe 'User Mode p (privacy)' do
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot2.received_pattern(/#secret/)).not_to eq(true)
+    expect(@cbot2.received_pattern(/\#secret/)).not_to eq(true)
   end
 
 end

@@ -45,6 +45,6 @@ describe 'SAPART command' do
     expect(@obot.received_pattern(/ 381 /)).to eq(true)
     expect(@obot.received_pattern(/ 481 /)).not_to eq(true)
     expect(@obot.received_pattern(/ forced to part /)).to eq(true)
-    expect(@obot.received_pattern(/^:obot.*PART #test/)).to eq(true)
+    expect(@obot.received_pattern(/^:obot.*PART \#test/)).to eq(true)
   end
 end

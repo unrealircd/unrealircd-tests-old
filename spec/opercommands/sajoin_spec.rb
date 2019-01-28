@@ -42,6 +42,6 @@ describe 'SAJOIN command' do
     expect(@obot.received_pattern(/ 381 /)).to eq(true)
     expect(@obot.received_pattern(/ 481 /)).not_to eq(true)
     expect(@obot.received_pattern(/ forced to join /)).to eq(true)
-    expect(@obot.received_pattern(/ 366 obot #test /)).to eq(true)
+    expect(@obot.received_pattern(/ 366 obot \#test /)).to eq(true)
   end
 end
