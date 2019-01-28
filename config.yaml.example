@@ -7,3 +7,7 @@ Servers:
     host: '127.0.0.1'
     port: 5668
     ssl_port: 5901
+  hub:
+    host: '127.0.0.1'
+    port: 5660
+    ssl_port: 5910

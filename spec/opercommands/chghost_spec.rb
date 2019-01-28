@@ -38,9 +38,9 @@ describe 'CHGHOST command' do
   it 'should allow CHGHOST to opers' do
     @swarm.perform do
       @obot.send("OPER netadmin test")
-      sleep(0.5)
+      sleep(1)
       @obot.send("CHGHOST cbot2 some.nice.new.vhost")
-      sleep(0.5)
+      sleep(1)
       @cbot2.send("WHOIS cbot2")
       @obot.send("WHOIS cbot2")
     end

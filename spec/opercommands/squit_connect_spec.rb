@@ -21,7 +21,7 @@ describe 'SQUIT and CONNECT commands' do
 
   it 'should disallow SQUIT to normal users' do
     @swarm.perform do
-      @obot2.send("SQUIT irc1.test.net")
+      @obot2.send("SQUIT hub.test.net")
     end
     @swarm.execute
     # We expect the command to error
@@ -30,7 +30,7 @@ describe 'SQUIT and CONNECT commands' do
 
   it 'should disallow CONNECT to normal users' do
     @swarm.perform do
-      @obot2.send("CONNECT irc1.test.net")
+      @obot2.send("CONNECT hub.test.net")
     end
     @swarm.execute
     # We expect the command to error
@@ -42,11 +42,11 @@ describe 'SQUIT and CONNECT commands' do
       @obot2.send("OPER netadmin test")
       sleep(1)
       @obot2.send("PRIVMSG cbot1 :before squit")
-      @obot2.send("SQUIT irc1.test.net")
+      @obot2.send("SQUIT hub.test.net")
       @obot2.send("PRIVMSG cbot1 :after squit")
       sleep(0.5)
-      @obot2.send("CONNECT irc1.test.net")
-      sleep(1.5)
+      @obot2.send("CONNECT hub.test.net")
+      sleep(2)
       @obot2.send("PRIVMSG cbot1 :after reconnect")
       sleep(1)
     end

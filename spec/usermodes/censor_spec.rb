@@ -11,9 +11,9 @@ describe 'User Mode G (censor)' do
   it 'should censor bad words' do
     @swarm.perform do
       @cbot2.send("MODE cbot2 +G")
-      sleep(0.5)
+      sleep(1)
       @cbot1.send("PRIVMSG cbot2 :aa fucked bb")
-      sleep(0.5)
+      sleep(1)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/fuck/)).not_to eq(true)
@@ -23,9 +23,9 @@ describe 'User Mode G (censor)' do
   it 'should not censor good words' do
     @swarm.perform do
       @cbot2.send("MODE cbot2 +G")
-      sleep(0.5)
+      sleep(1)
       @cbot1.send("PRIVMSG cbot2 :sunshine")
-      sleep(0.5)
+      sleep(1)
     end
     @swarm.execute
     expect(@cbot2.received_pattern(/sunshine/)).to eq(true)
