@@ -4,34 +4,34 @@ describe 'CAP chghost' do
   before(:each) do
     @swarm = Ircfly::Swarm.new
     server = IRC_CONFIG.servers['primary']
-    @cbot1 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1')
-    @cbot2 = @swarm.fly(server: server.host, port: server.port, nick: 'cbot2')
+    @cbot1a = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1a')
+    @cbot1b = @swarm.fly(server: server.host, port: server.port, nick: 'cbot1b')
   end
 
   it 'should send CHGHOST to CAP chghost clients' do
     @swarm.perform do
-      @cbot1.send("CAP REQ chghost")
-      @cbot1.send("JOIN #test")
-      @cbot2.send("MODE cbot2 -x")
-      @cbot2.send("JOIN #test")
+      @cbot1a.send("CAP REQ chghost")
+      @cbot1a.send("JOIN #test")
+      @cbot1b.send("MODE cbot1b -x")
+      @cbot1b.send("JOIN #test")
       sleep(0.5)
-      @cbot2.send("MODE cbot2 +x")
+      @cbot1b.send("MODE cbot1b +x")
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/:cbot2.* CHGHOST.*/)).to eq(true)
+    expect(@cbot1a.received_pattern(/:cbot1b.* CHGHOST.*/)).to eq(true)
   end
 
   it 'should not send CHGHOST to non-CAP-chghost clients' do
     @swarm.perform do
-      @cbot1.send("JOIN #test")
-      @cbot2.send("MODE cbot2 -x")
-      @cbot2.send("JOIN #test")
-      @cbot2.send("MODE cbot2 +x")
+      @cbot1a.send("JOIN #test")
+      @cbot1b.send("MODE cbot1b -x")
+      @cbot1b.send("JOIN #test")
+      @cbot1b.send("MODE cbot1b +x")
       sleep(0.5)
     end
     @swarm.execute
-    expect(@cbot1.received_pattern(/:cbot2.*CHGHOST.*/)).not_to eq(true)
+    expect(@cbot1a.received_pattern(/:cbot1b.*CHGHOST.*/)).not_to eq(true)
   end
 
 end
