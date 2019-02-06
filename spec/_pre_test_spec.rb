@@ -34,7 +34,7 @@ describe 'pre-test' do
       sleep(4)
     end
     @swarm.execute
-    expect(@obot1.received_pattern(/.*Configuration loaded without any problems/)).to eq(true)
+    expect(@obot2.received_pattern(/.*Configuration loaded without any problems/)).to eq(true)
   end
 
 end
