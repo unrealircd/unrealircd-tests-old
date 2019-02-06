@@ -24,9 +24,8 @@ describe 'server synching' do
       @bot2.send("JOIN #test")
       @bothub.send("JOIN #test")
       sleep(1)
-      @bot2.send("PRIVMSG bot1 :before squit")
+      @bot2.send("PRIVMSG bot1 :before squit") # must always be delivered
       @bot2.send("SQUIT hub.test.net")
-      @bot2.send("PRIVMSG bot1 :after squit")
       # Now we do our thing
       @bot1.send("MODE #test +bbb lala!lala@ban.number-1.irc1 lala!lala@ban.number-2.irc1 lala!lala@ban.number-3.irc1")
       @bot1.send("MODE #test +eee lala!lala@exempt.number-1.irc1 lala!lala@exempt.number-2.irc1 lala!lala@exempt.number-3.irc1")
@@ -36,6 +35,7 @@ describe 'server synching' do
       @bot2.send("MODE #test +III lala!lala@invex.number-1.irc2 lala!lala@invex.number-2.irc2 lala!lala@invex.number-3.irc2")
       sleep(1)
       # And we synch again
+      @bot2.send("PRIVMSG bot1 :after squit") # must never get delivered
       @bot2.send("CONNECT hub.test.net")
       sleep(2)
       @bot2.send("PRIVMSG bot1 :after reconnect")
@@ -163,9 +163,8 @@ describe 'server synching' do
       @bot2.send("JOIN #test")
       @bothub.send("JOIN #test")
       sleep(1)
-      @bot2.send("PRIVMSG bot1 :before squit")
+      @bot2.send("PRIVMSG bot1 :before squit") # must always be delivered
       @bot2.send("SQUIT hub.test.net")
-      @bot2.send("PRIVMSG bot1 :after squit")
       # Now we do our thing.. we must ensure we have a different TS though..
       sleep(2)
       @bot2.send("PART #test")
@@ -179,6 +178,7 @@ describe 'server synching' do
       @bot2.send("MODE #test +III lala!lala@invex.number-1.irc2 lala!lala@invex.number-2.irc2 lala!lala@invex.number-3.irc2")
       sleep(1)
       # And we synch again
+      @bot2.send("PRIVMSG bot1 :after squit") # must never be delivered
       @bot2.send("CONNECT hub.test.net")
       sleep(2)
       @bot2.send("PRIVMSG bot1 :after reconnect")
