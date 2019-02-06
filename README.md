@@ -57,3 +57,4 @@ Tests:
 * `spec/cap` - CAP (client protocol negotiation)
 * `spec/usercommands/` - User commands, such as JOIN PART TOPIC etc.
 * `spec/opercommands/` - IRCOp-only commands, such as SAJOIN SAPART KILL etc.
+* `spec/other/` - Other tests that do not fit in the above categories.
