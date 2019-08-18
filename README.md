@@ -1,8 +1,9 @@
 ## About
-These are the automated tests for UnrealIRCd. They will test various features.
-Our ultimate goal is to have a test for each and every feature.
+This is the OLD automated test system for UnrealIRCd 4 (ruby-based).
+The new test framework can be found at https://github.com/unrealircd/unrealircd-tests
 
-Right now we have tests for (almost) all channel modes and user modes but almost none for all the commands.
+This will test a subset of features. The ultimate goal is to have a test for each and every feature.
+Right now we have tests for (almost) all channel modes and user modes but almost none for commands.
 
 ## Installation instructions
 
